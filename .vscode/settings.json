@@ -1,0 +1,17 @@
+{
+    "cSpell.words": [
+        "Binwalk",
+        "boardname",
+        "Choser",
+        "infoblock",
+        "inizializer",
+        "listners",
+        "Marangi",
+        "Osck",
+        "osik",
+        "Pyload",
+        "pyloadstart",
+        "unsign"
+    ],
+    "java.jdt.ls.vmargs": "-noverify -Xmx2G -XX:+UseG1GC -XX:+UseStringDeduplication"
+}

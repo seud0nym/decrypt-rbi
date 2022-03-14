@@ -1,14 +1,24 @@
-[![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.me/AnsuelS) [![License](https://img.shields.io/github/license/Ansuel/nginx-ubus-module.svg?style=flat)](https://github.com/Ansuel/nginx-ubus-module/blob/master/LICENSE)
+# decrypt-rbi
 
-# Decrypt_RBI_Firmware_Utility
+This fork is a command line wrapper for https://github.com/Ansuel/Decrypt_RBI_Firmware_Utility.
 
-To add osck key change the file here:
-https://github.com/Ansuel/Decrypt_RBI_Firmware_Utility/blob/master/src/decrypt_rbi/board.java
+## Usage
 
-# To compile
+Download the latest decrypt-rbi.jar release file and then run it by passing the path to the RBI file as the only parameter.
+```
+java -jar decrypt-rbi.jar path_to_file.rbi
+```
 
-This java application is based on java 8 
-Pay attention to set the right JDK 
-Docker image used to compile this maven project is openjdk:8u162-jdk
+This will decrypt the RBI file and create the new decrypted file in the same directory with an extension of `.bin`.
 
-I'm using Java 1.8 for compatibility reason as this can be easily opened on every system. To use more recent java version i need to make system specific version as JavaFx got dropped from openJDK 9+, also on windows to run java 11 application users need to install custom java version.
+You can then extract the filesystem from the `.bin` file with a utility such as [p7zip](https://www.7-zip.org/). e.g.
+```
+/usr/bin/7z x -o'directory_name' 'decrypted_rbi_file.bin'
+```
+
+### Oracle Java-8 JRE 
+
+If you are using an Oracle Java-8 JRE, you need to _exclude_ the standard JavaFX libraries. e.g.
+```
+java -Djava.ext.dirs= -jar decrypt-rbi.jar path_to_file.rbi
+```
